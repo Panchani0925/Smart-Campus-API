@@ -3,26 +3,23 @@
 Overview : This project implements a RESTful API for managing a university Smart Campus system, developed using JAX-RS (Jersey).
 
 The API is designed to manage:
- 
-* Rooms
-* Sensors
-* Sensor Readings  
+   * Rooms
+   * Sensors
+   * Sensor Readings  
 
 It follows REST principles such as:
-
-* Resource-based design
-* Proper HTTP methods
-* Meaningful status codes
-* JSON communication
+  * Resource-based design
+  * Proper HTTP methods
+  * Meaningful status codes
+  * JSON communication
 
 The system simulates a real-world backend service for campus facilities management.
 
 Technologies Used:
-
-* Java
-* JAX-RS (Jersey)
-* Maven
-* In-memory data structures (HashMap, ArrayList)
+  * Java
+  * JAX-RS (Jersey)
+  * Maven
+  * In-memory data structures (HashMap, ArrayList)
 
 **How to Run the Project**
 
