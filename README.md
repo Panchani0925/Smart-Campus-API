@@ -23,12 +23,20 @@ Technologies Used:
 
 **How to Run the Project**
 
-1.) Clone the repository:
+1.) Clone the repository:   
         git clone <your-repo-link>
+
+
 2.) Open the project in IDE ( NetBeans )
+
+
 3.) Build using Maven:
         mvn clean install
+
+        
 4.) Run the server ( Tomcat )
+
+
 5.) Access API:
       http://localhost:8080/SmartCampusAPI1/
 
