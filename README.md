@@ -40,22 +40,34 @@ Technologies Used:
 5.) Access API:
       http://localhost:8080/SmartCampusAPI1/
 
+      
+
 **Sample API Endpoints**
 
   **Rooms**
-    * GET /api/v1/rooms
-    * POST /api/v1/rooms
-    * GET /api/v1/rooms/{id}
-    * DELETE /api/v1/rooms/{id}
+  
+  * GET /api/v1/rooms
+    
+  * POST /api/v1/rooms
+    
+  * GET /api/v1/rooms/{id}
+  
+  * DELETE /api/v1/rooms/{id}
     
   **Sensors**
-    * GET /api/v1/sensors
-    * GET /api/v1/sensors?type=CO2
-    * POST /api/v1/sensors
+    
+   * GET /api/v1/sensors
+
+   * GET /api/v1/sensors?type=CO2
+     
+   * POST /api/v1/sensors
   
   **Sensor Readings**
-    * GET /api/v1/sensors/{id}/readings
-    * POST /api/v1/sensors/{id}/readings
+    
+   * GET /api/v1/sensors/{id}/readings
+  
+   * POST /api/v1/sensors/{id}/readings
+     
 
 **Sample CURL Commands**
 
