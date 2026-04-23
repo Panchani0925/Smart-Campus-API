@@ -24,7 +24,7 @@ Technologies Used:
 **How to Run the Project**
 
 1.) Clone the repository:   
-        git clone <your-repo-link>
+        git clone https://github.com/Panchani0925/Smart-Campus-API.gitnk-repo-li
 
 
 2.) Open the project in IDE ( NetBeans )
