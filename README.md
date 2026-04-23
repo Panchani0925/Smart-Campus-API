@@ -42,7 +42,7 @@ Technologies Used:
 
       
 
-**Sample API Endpoints**
+# Sample API Endpoints
 
   **Rooms**
   
@@ -69,9 +69,10 @@ Technologies Used:
    * POST /api/v1/sensors/{id}/readings
      
 
-**Sample CURL Commands**
+# Sample CURL Commands
 
  **Get all rooms**
+ 
 curl -X GET http://localhost:8080/api/v1/rooms
 
  **Create a room**
@@ -108,9 +109,9 @@ curl -X POST http://localhost:8080/api/v1/sensors/S1/readings \
    
      This helps avoid problems with shared data.
 
-     But in this project:
-         * We use in-memory data like HashMap and ArrayList.
-         * So, data should be stored in static collections to keep it safe.
+     But in this project:                                                                                                                                                  
+         * We use in-memory data like HashMap and ArrayList.                                                                                                                      
+         * So, data should be stored in static collections to keep it safe.                                                                                                   
          * We may also need synchronization to prevent multiple users changing data at the same time.
 
    Because of this design:
@@ -131,8 +132,8 @@ curl -X POST http://localhost:8080/api/v1/sensors/S1/readings \
    
       * API becomes more flexible and can grow easily
 
-  Compared to static documentation:
-      * Clients can find endpoints by themselves
+  Compared to static documentation:                                                                                                                                          
+      * Clients can find endpoints by themselves                                                                                                                            
       * No need to depend too much on external documents
 
 **_Part 2: Room Management_**
@@ -145,8 +146,8 @@ curl -X POST http://localhost:8080/api/v1/sensors/S1/readings \
    
       * Requires extra requests from client
 
-  Returning full objects:
-      * More useful information in one response
+  Returning full objects:                                                                                                                                                    
+      * More useful information in one response                                                                                                                             
       * Slightly higher bandwidth usage
 
   In this API, returning full objects is better for usability.
@@ -155,9 +156,9 @@ curl -X POST http://localhost:8080/api/v1/sensors/S1/readings \
 
   Yes, DELETE is idempotent.
 
-  Explanation:
-      * First request → deletes the room
-      * Repeated request → room no longer exists
+  Explanation:                                                                                                                                                             
+      * First request → deletes the room                                                                                                                                   
+      * Repeated request → room no longer exists                                                                                                                                
       * Response remains consistent (e.g., 404)
 
   Thus, multiple identical requests produce the same result.
@@ -166,7 +167,7 @@ curl -X POST http://localhost:8080/api/v1/sensors/S1/readings \
 
 1. @Consumes JSON Behavior
 
-If client sends:
+If client sends:                                                                                                                                                          
   * text/plain or application/xml
 
 Then:
@@ -201,79 +202,79 @@ Less flexible and not ideal for search operations.
 
 1. Sub-Resource Locator Benefits
 
-Advantages:
-    * Cleaner code structure
-    * Separation of concerns
+Advantages:                                                                                                                                                                    
+    * Cleaner code structure                                                                                                                                                                             
+    * Separation of concerns                                                                                                                                                    
     * Easier maintenance
 
-Instead of one large class:
-    * Logic is split into smaller classes
+Instead of one large class:                                                                                                                                                       
+    * Logic is split into smaller classes                                                                                                                                            
     * Improves readability
 
 2. Sensor Reading Update Logic
 
-When a new reading is added:
-    * It is stored in reading list
+When a new reading is added:                                                                                                                                                       
+    * It is stored in reading list                                                                                                                                                
     * The sensor’s currentValue is updated
 
-This ensures:
-    * Data consistency
+This ensures:                                                                                                                                                                    
+    * Data consistency                                                                                                                                                      
     * Latest value always available
 
 **_Part 5: Error Handling & Logging_**
 
 1. HTTP 409 Conflict
 
-Used when:
+Used when:                                                                                                                                                                   
     * Trying to delete a room with sensors
 
-Reason:
+Reason:                                                                                                                                                             
     * Operation conflicts with current state
 
 2. HTTP 422 vs 404
 
-422 is better because:
-      * Request format is valid
+422 is better because:                                                                                                                                                       
+      * Request format is valid                                                                                                                                            
       * But contains invalid data (wrong roomId)
 
 404 is for missing endpoint, not invalid payload.
 
 3. HTTP 403 Forbidden
-
-Used when:
-    * Sensor is in MAINTENANCE
+ 
+Used when:                                                                                                                                                              
+    * Sensor is in MAINTENANCE                                                                                                                                             
     * Cannot accept readings
 
 4. Risk of Exposing Stack Traces
 
-Exposing stack traces can reveal:
-      * Internal class names
-      * File structure
+Exposing stack traces can reveal:                                                                                                                                             
+      * Internal class names                                                                                                                                                          
+      * File structure                                                                                                                                                               
       * Server logic
 
-Attackers can use this to:
-       * Identify vulnerabilities
+Attackers can use this to:                                                                                                                                                        
+       * Identify vulnerabilities                                                                                                                                                    
        * Plan attacks
 
 Therefore, API must hide internal errors.
 
 5. Logging with Filters
 
-Using filters is better because:
-        * Centralized logging
-        * No duplicate code
+Using filters is better because:                                                                                                                                          
+        * Centralized logging                                                                                                                                                  
+        * No duplicate code                                                                                                                                                    
         * Cleaner resource methods
 
-Logs:
-    * Request method + URI
+Logs:                                                                                                                                                                       
+    * Request method + URI                                                                                                                                                   
     * Response status
 
 # Conclusion
 
-This project demonstrates:
-      * Proper RESTful API design
-      * Use of JAX-RS framework
-      * Error handling and validation
+This project demonstrates:                                                                                                                                                    
+      * Proper RESTful API design                                                                                                                                    
+      * Use of JAX-RS framework                                                                                                                                             
+      * Error handling and validation                                                                                                                                        
       * Clean and scalable architecture
 
 The API is designed to simulate a real-world smart campus backend system.
